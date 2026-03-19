@@ -1,15 +1,18 @@
  import java.io.*;
- import jakarta.servlet.*;
- import jakarta.servlet.http.*;
- import java.util.*;
- import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest; 
-import jakarta.servlet.http.HttpservletResponse;
-import jakarta.servlet.http.Httpsession;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import java.util.*;
+
+import jakarta.servlet.http.HttpServlet; // IT IS A BASE CLASS FOR CREATING THE HTTP SERVLET
+import jakarta.servlet.http.HttpServletRequest;  // IT IS USED TO GET THE DATA FROM THE CLINT
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 public class AddToCartServlet extends HttpServlet{
-    protected void doget (HttpservletRequest request, HttpservletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException,IOException{
-        string book = request.getParameter("book");
+        String book = request.getParameter("book");
+
         HttpSession session = request.getSession();
 
         List<String> cart = (List<String>) session.getAttribute("cart");
@@ -24,4 +27,4 @@ public class AddToCartServlet extends HttpServlet{
 
         response.sendRedirect("index.jsp");
     }
-} 
+}
